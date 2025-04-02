@@ -1120,7 +1120,7 @@ struct Builder {
         File root = fs->open(path.length() ? path.c_str() : ("/"));
         if (!root || !root.isDirectory()) return;
         File file;
-        while (file = root.openNextFile()) {
+        while ((file = root.openNextFile())) {
             if (file.isDirectory()) {
                 if (levels) _showFiles(fs, file.path(), odir, levels - 1);
             } else {
